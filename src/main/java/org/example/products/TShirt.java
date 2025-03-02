@@ -3,10 +3,17 @@ package org.example.products;
 import org.example.constants.tshirt.*;
 
 public class TShirt extends Garment {
+    private int price = 25;
     private Sleeves sleeves;
     private Neck neck;
 
     public TShirt() {}
+
+    @Override
+    public int getPrice() { return price; }
+
+    @Override
+    public void setPrice(int price) { this.price = price; }
 
     public Sleeves getSleeves() {
         return sleeves;

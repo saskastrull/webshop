@@ -1,4 +1,4 @@
-package org.example.factory;
+package org.example.builders;
 
 import org.example.products.TShirt;
 

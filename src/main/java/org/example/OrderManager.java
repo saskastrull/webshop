@@ -2,14 +2,12 @@ package org.example;
 
 import org.example.products.Garment;
 
-import java.util.ArrayList;
-
 /**
- * Represents a single order (the shopping cart) of one customer.
+ *
  */
 public class OrderManager {
     private Customer customer;
-    private ArrayList<Garment> garments = new ArrayList<>();
+    private Order order;
 
     // Eager creation
     private static final OrderManager INSTANCE = new OrderManager();
@@ -22,15 +20,7 @@ public class OrderManager {
     public void processOrder() {
     }
 
-    private void addGarment() {
-
-    }
-
-    public void setGarments(ArrayList<Garment> garments) {
-        this.garments = garments;
-    }
-
-    public ArrayList<Garment> getGarments() {
-        return garments;
+    public void addGarment(Garment garment) {
+        order.addGarment(garment);
     }
 }

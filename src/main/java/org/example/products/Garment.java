@@ -32,4 +32,8 @@ public abstract class Garment {
     public Color getColor() {
         return color;
     }
+
+    public abstract int getPrice();
+
+    public abstract void setPrice(int price);
 }
