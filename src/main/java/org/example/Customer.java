@@ -2,6 +2,9 @@ package org.example;
 
 public class Customer {
     private String name;
+    private String mail;
+    private String address;
+    private int id;
 
     public void setName(String name) {
         this.name = name;
@@ -9,5 +12,29 @@ public class Customer {
 
     public String getName() {
         return name;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

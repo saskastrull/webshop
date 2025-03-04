@@ -1,11 +1,9 @@
 package org.example.products;
 
-import org.example.constants.skirt.*;
-
 public class Skirt extends Garment {
     private int price = 20;
-    private Waistline waistline;
-    private Pattern pattern;
+    private String waistline;
+    private String pattern;
 
     public Skirt() {}
 
@@ -15,11 +13,17 @@ public class Skirt extends Garment {
     @Override
     public void setPrice(int price) { this.price = price; }
 
-    public Waistline getWaistline() { return waistline; }
+    public String getWaistline() { return waistline; }
 
-    public Pattern getPattern() { return pattern; }
+    public String getPattern() { return pattern; }
 
-    public void setWaistline(Waistline waistline) { this.waistline = waistline; }
+    public void setWaistline(String waistline) {
+        this.waistline = waistline;
+        System.out.println("WAISTLINE WAS CUSTOMIZED TO " + this.waistline);
+    }
 
-    public void setPattern(Pattern pattern) { this.pattern = pattern; }
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+        System.out.println("PATTERN WAS CUSTOMIZED TO " + this.pattern);
+    }
 }

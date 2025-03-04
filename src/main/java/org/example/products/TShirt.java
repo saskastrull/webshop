@@ -1,11 +1,9 @@
 package org.example.products;
 
-import org.example.constants.tshirt.*;
-
 public class TShirt extends Garment {
     private int price = 25;
-    private Sleeves sleeves;
-    private Neck neck;
+    private String sleeves;
+    private String neck;
 
     public TShirt() {}
 
@@ -15,19 +13,21 @@ public class TShirt extends Garment {
     @Override
     public void setPrice(int price) { this.price = price; }
 
-    public Sleeves getSleeves() {
+    public String getSleeves() {
         return sleeves;
     }
 
-    public Neck getNeck() {
+    public String getNeck() {
         return neck;
     }
 
-    public void setSleeves(Sleeves sleeves) {
+    public void setSleeves(String sleeves) {
         this.sleeves = sleeves;
+        System.out.println("SLEEVES WERE CUSTOMIZED TO " + this.sleeves);
     }
 
-    public void setNeck(Neck neck) {
+    public void setNeck(String neck) {
         this.neck = neck;
+        System.out.println("NECK WAS CUSTOMIZED TO " + this.neck);
     }
 }
