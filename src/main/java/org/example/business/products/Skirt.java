@@ -1,4 +1,4 @@
-package org.example.products;
+package org.example.business.products;
 
 public class Skirt extends Garment {
     private int price = 20;

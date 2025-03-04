@@ -1,4 +1,4 @@
-package org.example.products;
+package org.example.business.products;
 
 import org.example.constants.general.*;
 

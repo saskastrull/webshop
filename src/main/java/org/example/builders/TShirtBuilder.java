@@ -1,6 +1,6 @@
 package org.example.builders;
 
-import org.example.products.TShirt;
+import org.example.business.products.TShirt;
 
 public class TShirtBuilder extends GarmentBuilder {
 

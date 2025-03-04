@@ -1,7 +1,7 @@
 package org.example.commands;
 
-import org.example.products.Garment;
-import org.example.products.TShirt;
+import org.example.business.products.Garment;
+import org.example.business.products.TShirt;
 
 public class SleevesCommand implements GarmentCustomizationCommand {
     @Override

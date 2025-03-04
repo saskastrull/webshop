@@ -1,7 +1,7 @@
 package org.example.builders;
 
 import org.example.constants.general.*;
-import org.example.products.Garment;
+import org.example.business.products.Garment;
 
 public abstract class GarmentBuilder {
     protected Size size;

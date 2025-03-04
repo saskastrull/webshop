@@ -1,6 +1,6 @@
 package org.example.commands;
 
-import org.example.products.Garment;
+import org.example.business.products.Garment;
 
 public interface GarmentCustomizationCommand {
     Garment customize (Garment garment, String descriptor);

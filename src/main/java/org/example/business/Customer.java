@@ -1,4 +1,4 @@
-package org.example;
+package org.example.business;
 
 public class Customer {
     private String name;

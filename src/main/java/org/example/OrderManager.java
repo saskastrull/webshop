@@ -1,6 +1,8 @@
 package org.example;
 
-import org.example.products.Garment;
+import org.example.business.Customer;
+import org.example.business.Order;
+import org.example.business.products.Garment;
 
 /**
  *
