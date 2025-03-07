@@ -1,39 +1,34 @@
 package org.example;
 
-import org.example.constants.GarmentType;
+import org.example.business.Customer;
+
+import java.util.Scanner;
 
 public class Main {
-
-    private GarmentType garmentType;
-
     public static void main(String[] args) {
 
-        // LOG IN / EXIT
-        // skapa customer
+        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("0. EXIT \n1. LOGIN");
+        if (scanner.nextInt() == 1) {
+            scanner.nextLine();
+            System.out.println("ENTER YOUR NAME: ");
+            String name = scanner.nextLine();
 
-        // ORDER / EXIT
-        // ordermanager börjar köra sitt
+            // Create customer from name
+            IDManager idManager = IDManager.getInstance();
+            Customer customer = new Customer(name, idManager.generateID());
+            System.out.println("LOGGING IN AS " + name);
 
-        // PANTS / TSHIRT / SKIRT / EXIT
-        // assign valt värde till garmentType
-
-        // PICK COLOR: 1 / 2 / 3
-        // PICK FABRIC 1 / 2 / 3
-        // PICK SIZE 1 / 2 / 3
-        // KÖR RELEVANT BUILDER
-
-        // om PANTS: välj längd -> välj fit
-        // om SKIRT: välj waistline -> välj pattern
-        // om TSHIRT: välj sleeves -> välj neck
-        // KÖR COMMANDS... ändra priset på plagget...
-
-
-
-
-
-        // shop more (kör om loop)
-        // complete order (SKAPAR ORDER OCH RECEIPT? meddelar CEO genom observer)
-
-        System.out.println("Hello, World!");
+            // Start ordering process or exit
+            System.out.println("0. EXIT \n1. BEGIN ORDER");
+            if (scanner.nextInt() == 1) {
+                // Start the ordering process
+                OrderManager orderManager = new OrderManager(customer);
+                orderManager.orderProcess();
+            }
+        }
+        else {
+            System.out.println("EXITED");
+        }
     }
 }

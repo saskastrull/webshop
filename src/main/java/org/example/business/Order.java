@@ -18,6 +18,10 @@ public class Order {
         this.garments.add(garment);
     }
 
+    public boolean isEmpty() {
+        return garments.isEmpty();
+    }
+
     public ArrayList<Garment> getGarments() {
         return garments;
     }

@@ -6,6 +6,13 @@ public class Customer {
     private String address;
     private int id;
 
+    public Customer() {}
+
+    public Customer(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

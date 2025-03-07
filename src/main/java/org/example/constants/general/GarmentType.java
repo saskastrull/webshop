@@ -1,4 +1,4 @@
-package org.example.constants;
+package org.example.constants.general;
 
 public enum GarmentType {
     SKIRT,
