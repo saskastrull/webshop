@@ -10,13 +10,12 @@ public class GarmentCustomizationPipeline {
         pipeline.add(command);
     }
 
-    public Garment execute(Garment garment, String descriptor) {
+    public Garment execute(Garment garment) {
         Garment result = garment;
 
         for(GarmentCustomizationCommand command : pipeline) {
-            result = command.customize(result, descriptor);
+            result = command.customize(result);
         }
-
         return result;
     }
 }

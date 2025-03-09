@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.business.Customer;
+import org.example.business.Order;
+
 import java.util.Scanner;
 
 /**
@@ -22,7 +24,7 @@ public class Main {
 
             System.out.println("0. EXIT \n1. BEGIN ORDER");
             if (scanner.nextInt() == 1) {
-                OrderManager orderManager = new OrderManager(customer);
+                OrderManager orderManager = new OrderManager(customer, new Order(customer, idManager.generateID()));
                 // Set up observer through OrderManager
                 OrderObserver orderObserver = new OrderObserver();
                 orderManager.setOrderObserver(orderObserver);

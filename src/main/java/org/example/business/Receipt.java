@@ -1,5 +1,7 @@
 package org.example.business;
 
+import org.example.business.products.Garment;
+
 /**
  * Class containing information about all garments of an order.
  */
@@ -7,18 +9,27 @@ public class Receipt {
     private Order order;
     private String name;
     private int id;
+    private int total;
 
     public Receipt() {}
 
-    public Receipt(Order order) {
+    public Receipt(Order order, int id) {
         this.order = order;
+        this.id = id;
     }
 
     public void createReceipt() {
-        System.out.println("RECEIPT " + this.id);
-        System.out.println("ORDER " + this.order.getId());
-        // loopa igenom alla plagg i Order och printa all info om dem, en rad för ett plagg
-        System.out.println("HÄR ÄR KVITTOINFO");
+        System.out.println("RECEIPT ID: " + this.id + "\nORDER ID: " + this.order.getId());
+
+        // Print info about garments and calculate total price
+        for (Garment garment : order.getGarments()) {
+            total += garment.getPrice();
+            System.out.println(garment.toString());
+        }
+
+        System.out.println("TOTAL: " + total);
+        System.out.println("SHIPPING TO: " + order.getCustomer().getAddress() +
+                "\nCUSTOMER CONTACT: " + order.getCustomer().getMail());
     }
 
     public Order getOrder() {
