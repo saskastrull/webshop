@@ -1,5 +1,8 @@
 package org.example.business;
 
+/**
+ * Class which stores user information.
+ */
 public class Customer {
     private String name;
     private String mail;

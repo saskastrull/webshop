@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * Singleton class for handling object IDs.
+ * Singleton class for creating and storing unique IDs.
  */
 public class IDManager {
     private final Set<Integer> ids = new HashSet<>(); // HashSet to avoid duplicates

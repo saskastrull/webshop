@@ -5,7 +5,7 @@ import org.example.business.products.Garment;
 import java.util.ArrayList;
 
 /**
- * Represents the shopping cart of the customer.
+ * Represents the shopping cart of a customer.
  */
 public class Order {
     private ArrayList<Garment> garments = new ArrayList<>();

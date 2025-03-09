@@ -1,15 +1,28 @@
 package org.example.builders;
 
 import org.example.business.products.Pants;
+import org.example.constants.general.*;
 
 public class PantsBuilder extends GarmentBuilder {
+    private Pants pants = new Pants();
+
+    public PantsBuilder addColor(Color color) {
+        pants.setColor(color);
+        return this;
+    }
+
+    public PantsBuilder addSize(Size size) {
+        pants.setSize(size);
+        return this;
+    }
+
+    public PantsBuilder addMaterial(Material material) {
+        pants.setMaterial(material);
+        return this;
+    }
 
     @Override
     public Pants build() {
-        Pants pants = new Pants();
-        pants.setSize(size);
-        pants.setMaterial(material);
-        pants.setColor(color);
         return pants;
     }
 }

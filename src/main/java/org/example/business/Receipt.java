@@ -1,5 +1,8 @@
 package org.example.business;
 
+/**
+ * Class containing information about all garments of an order.
+ */
 public class Receipt {
     private Order order;
     private String name;

@@ -1,12 +1,13 @@
 package org.example;
 
 import org.example.business.Customer;
-
 import java.util.Scanner;
 
+/**
+ * Main website where the customer logs in to the system.
+ */
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
         System.out.println("0. EXIT \n1. LOGIN");
         if (scanner.nextInt() == 1) {
@@ -19,12 +20,17 @@ public class Main {
             Customer customer = new Customer(name, idManager.generateID());
             System.out.println("LOGGING IN AS " + name);
 
-            // Start ordering process or exit
             System.out.println("0. EXIT \n1. BEGIN ORDER");
             if (scanner.nextInt() == 1) {
-                // Start the ordering process
                 OrderManager orderManager = new OrderManager(customer);
+                // Set up observer through OrderManager
+                OrderObserver orderObserver = new OrderObserver();
+                orderManager.setOrderObserver(orderObserver);
+                // Begin ordering process
                 orderManager.orderProcess();
+            }
+            else {
+                System.out.println("LOGGED OUT");
             }
         }
         else {

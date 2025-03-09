@@ -2,6 +2,9 @@ package org.example.business.products;
 
 import org.example.constants.general.*;
 
+/**
+ * Parent class for all concrete garments.
+ */
 public abstract class Garment {
     private Size size;
     private Material material;
@@ -34,8 +37,6 @@ public abstract class Garment {
     public Color getColor() {
         return color;
     }
-
-
 
     public String getName() {
         return name;

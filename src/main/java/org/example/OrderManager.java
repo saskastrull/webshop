@@ -1,20 +1,36 @@
 package org.example;
 
+import org.example.builders.PantsBuilder;
+import org.example.builders.SkirtBuilder;
+import org.example.builders.TShirtBuilder;
 import org.example.business.Customer;
 import org.example.business.Order;
 import org.example.business.products.Garment;
+import org.example.business.products.Pants;
+import org.example.business.products.Skirt;
+import org.example.business.products.TShirt;
+import org.example.constants.general.Color;
+import org.example.constants.general.Material;
+import org.example.constants.general.Size;
 
+import java.beans.PropertyChangeSupport;
 import java.util.Scanner;
 
 /**
- * Class for handling the ordering process.
+ * Class which handles the ordering process.
  */
 public class OrderManager {
+    private Color color;
+    private Material material;
+    private Size size;
     private final Customer customer;
     private Order order;
+    private OrderObserver orderObserver;
+    private PropertyChangeSupport support;
 
     public OrderManager(Customer customer) {
         this.customer = customer;
+        this.support = new PropertyChangeSupport(this);
     }
 
     public void orderProcess() {
@@ -31,24 +47,17 @@ public class OrderManager {
                 }
                 else {
                     placeOrder();
+                    closeOrder = true;
                 }
             }
             else if ((choice == 1 || choice == 2 || choice == 3)) {
-                createGarment(choice); // Begins process for sewing new garment
+                produceGarment(choice); // Begins process for sewing new garment
             }
-            else if (choice == 0) {
+            else {
                 scanner.close();
                 System.out.println("ORDER CANCELLED");
                 closeOrder = true;
             }
-
-            // PANTS / TSHIRT / SKIRT / EXIT
-            // assign valt värde till garmentType
-
-            // PICK COLOR: 1 / 2 / 3
-            // PICK FABRIC 1 / 2 / 3
-            // PICK SIZE 1 / 2 / 3
-            // KÖR RELEVANT BUILDER
 
             // om PANTS: välj längd -> välj fit
             // om SKIRT: välj waistline -> välj pattern
@@ -60,20 +69,87 @@ public class OrderManager {
         }
     }
 
-    private void placeOrder() {
-        // Fixa med observer som säger till ceo att order har lagts
-        System.out.println("PLACING ORDERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+    private void produceGarment(int type) {
+        // Check if order doesn't exist
+        if (this.order == null) {
+            this.order = new Order();
+            System.out.println("CREATING NEW ORDER");
+        }
+        System.out.println("ADDING GARMENT TO ORDER");
+        switch (type) {
+            case 1: buildTShirt();
+            case 2: buildPants();
+            case 3: buildSkirt();
+        }
     }
 
-    private void createGarment(int type) {
-        if (this.order == null) {
-            this.order = new Order(); // If first garment of order
-            System.out.println("skapa ny ordäer");
-        }
-        System.out.println("skapa skitlplaggg");
+    private void buildTShirt() {
+        TShirtBuilder builder = new TShirtBuilder();
+        customizeBasics();
+        TShirt tshirt = builder
+                .addColor(color)
+                .addSize(size)
+                .addMaterial(material)
+                .build();
+    }
+
+    private void buildSkirt() {
+        SkirtBuilder builder = new SkirtBuilder();
+        customizeBasics();
+        Skirt skirt = builder
+                .addColor(color)
+                .addSize(size)
+                .addMaterial(material)
+                .build();
+    }
+
+    private void buildPants() {
+        PantsBuilder builder = new PantsBuilder();
+        customizeBasics();
+        Pants pants = builder
+                .addColor(color)
+                .addSize(size)
+                .addMaterial(material)
+                .build();
+    }
+
+    // Get color, material and size from user
+    private void customizeBasics() {
+
+        System.out.println("PICK COLOR:\n1. ");
+
+        System.out.println("PICK MATERIAL:\n1. ");
+
+        System.out.println("PICK SIZE:\n1. ");
+    }
+
+    // Command customization
+    private void customizeExtra() {
+
+    }
+
+    private void placeOrder() {
+        System.out.println("kvitto här");
     }
 
     public void addGarment(Garment garment) {
+        support.firePropertyChange("gamrnet", this.order, garment);
         order.addGarment(garment);
+    }
+
+    public OrderObserver getOrderObserver() {
+        return orderObserver;
+    }
+
+    public void setOrderObserver(OrderObserver orderObserver) {
+        this.orderObserver = orderObserver;
+    }
+
+    public void addOrderObserver(OrderObserver orderObserver) {
+        support.addPropertyChangeListener(orderObserver);
+    }
+
+    public void removeOrderObserver(OrderObserver orderObserver) {
+        support.removePropertyChangeListener(orderObserver);
     }
 }
