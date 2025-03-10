@@ -22,8 +22,8 @@ public class OrderManager {
     private Color color;
     private Material material;
     private Size size;
-    private final Customer customer;
     private Order order;
+    private final Customer customer;
     private final Scanner scanner;
     IDManager idManager = IDManager.getInstance();
 
@@ -34,14 +34,14 @@ public class OrderManager {
     }
 
     public void orderProcess() {
-        boolean closeOrder = false; // If process should exit or continue to loop
+        boolean closeOrder = false;
 
         while (!closeOrder) {
             System.out.println("0. EXIT\n1. TSHIRTS\n2. PANTS\n3. SKIRTS\n4. PLACE ORDER");
             int choice = scanner.nextInt();
 
             if (choice == 4) {
-                if (this.order == null || this.order.isEmpty()){ // If customer attempts to place order with empty cart
+                if (this.order == null || this.order.isEmpty()){
                     System.out.println("PLEASE ADD SOMETHING TO YOUR CART");
                 }
                 else {
@@ -51,7 +51,7 @@ public class OrderManager {
                 }
             }
             else if ((choice == 1 || choice == 2 || choice == 3)) {
-                produceGarment(choice); // Begins process for sewing new garment
+                produceGarment(choice);
             }
             else {
                 scanner.close();
@@ -62,7 +62,6 @@ public class OrderManager {
     }
 
     private void produceGarment(int type) {
-        // Check if order doesn't exist
         if (this.order == null) {
             this.order = new Order(this.customer, idManager.generateID());
             System.out.println("CREATING NEW ORDER");
@@ -127,7 +126,6 @@ public class OrderManager {
                 .build();
     }
 
-    // Get color, material and size from user
     private void customizeBasics() {
         // Get color
         System.out.println("PICK COLOR:\n1. GREEN\n2. BLACK\n3. BLUE");
@@ -184,7 +182,6 @@ public class OrderManager {
         }
     }
 
-    // Pants commands
     private Pants customizePants(Pants pants) {
         GarmentCustomizationPipeline pipeline = new GarmentCustomizationPipeline();
         // Set fit
@@ -221,7 +218,6 @@ public class OrderManager {
         return pants;
     }
 
-    // Skirt commands
     private Skirt customizeSkirt(Skirt skirt) {
         GarmentCustomizationPipeline pipeline = new GarmentCustomizationPipeline();
         // Set pattern
@@ -258,7 +254,6 @@ public class OrderManager {
         return skirt;
     }
 
-    // TShirt commands
     private TShirt customizeTShirt(TShirt tshirt) {
         GarmentCustomizationPipeline pipeline = new GarmentCustomizationPipeline();
 
