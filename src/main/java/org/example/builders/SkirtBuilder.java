@@ -3,8 +3,21 @@ package org.example.builders;
 import org.example.business.products.Skirt;
 import org.example.constants.general.*;
 
+/**
+ * Builder class for constructing skirts.
+ */
 public class SkirtBuilder extends GarmentBuilder {
     private Skirt skirt = new Skirt();
+
+    public SkirtBuilder addId(int id) {
+        skirt.setId(id);
+        return this;
+    }
+
+    public SkirtBuilder addName(String name) {
+        skirt.setName(name);
+        return this;
+    }
 
     public SkirtBuilder addColor(Color color) {
         skirt.setColor(color);

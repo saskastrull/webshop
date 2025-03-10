@@ -2,24 +2,19 @@ package org.example;
 
 import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 
 /**
- * Singleton class for creating and storing unique IDs.
+ * Singleton class responsible for creating and storing unique IDs.
  */
 public class IDManager {
-    private final Set<Integer> ids = new HashSet<>(); // HashSet to avoid duplicates
+    private final HashSet<Integer> ids = new HashSet<>();
 
-    // Eager creation
     private static final IDManager INSTANCE = new IDManager();
 
     private IDManager() {}
 
-    public static IDManager getInstance() {
-        return INSTANCE;
-    }
+    public static IDManager getInstance() { return INSTANCE; }
 
-    // Generate a unique ID
     public int generateID() {
         Random random = new Random();
         boolean availableID = false;

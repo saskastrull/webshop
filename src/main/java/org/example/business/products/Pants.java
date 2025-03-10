@@ -35,7 +35,13 @@ public class Pants extends Garment {
         return length;
     }
 
-    public void setFit(String fit) { this.fit = fit; }
+    public void setFit(String fit) {
+        this.fit = fit;
+        System.out.println("FIT SET TO " + this.fit);
+    }
 
-    public void setLength(String length) { this.length = length; }
+    public void setLength(String length) {
+        this.length = length;
+        System.out.println("LENGTH SET TO " + this.length);
+    }
 }

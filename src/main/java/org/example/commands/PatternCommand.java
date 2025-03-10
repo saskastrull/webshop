@@ -3,6 +3,9 @@ package org.example.commands;
 import org.example.business.products.Garment;
 import org.example.business.products.Skirt;
 
+/**
+ * Command class used for setting the pattern of a skirt.
+ */
 public class PatternCommand implements GarmentCustomizationCommand {
     private String descriptor;
 

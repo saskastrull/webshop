@@ -11,29 +11,25 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+        Scanner scanner = new Scanner(System.in);
+        IDManager idManager = IDManager.getInstance();
+
         System.out.println("0. EXIT \n1. LOGIN");
         if (scanner.nextInt() == 1) {
             scanner.nextLine();
             System.out.println("ENTER YOUR NAME: ");
             String name = scanner.nextLine();
-
-            // Create customer from name
-            IDManager idManager = IDManager.getInstance();
             Customer customer = new Customer(name, idManager.generateID());
-            System.out.println("LOGGING IN AS " + name);
+            System.out.println("LOGGING IN AS " + name+"\n0. EXIT \n1. BEGIN ORDER");
 
-            System.out.println("0. EXIT \n1. BEGIN ORDER");
             if (scanner.nextInt() == 1) {
                 Order order = new Order(customer, idManager.generateID());
-                CEO ceo = new CEO("Nadjaturb", idManager.generateID());
-
-                // Set up observer
+                CEO ceo = new CEO("Francis", idManager.generateID());
+                // Set up observer for order
                 OrderObserver orderObserver = new OrderObserver(ceo);
                 order.addPropertyChangeSupport(orderObserver);
-
-                OrderManager orderManager = new OrderManager(customer, order);
                 // Begin ordering process
+                OrderManager orderManager = new OrderManager(customer, order);
                 orderManager.orderProcess();
             }
             else {

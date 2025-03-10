@@ -20,15 +20,12 @@ public class Receipt {
 
     public void createReceipt() {
         System.out.println("RECEIPT ID: " + this.id + "\nORDER ID: " + this.order.getId());
-
-        // Print info about garments and calculate total price
         for (Garment garment : order.getGarments()) {
             total += garment.getPrice();
             System.out.println(garment.toString());
         }
-
-        System.out.println("TOTAL: $" + total);
-        System.out.println("SHIPPING TO: " + order.getCustomer().getAddress() +
+        System.out.println("TOTAL: $" + total + "\nCUSTOMER NAME: " + order.getCustomer().getName() +
+                "\nSHIPPING TO: " + order.getCustomer().getAddress() +
                 "\nCUSTOMER CONTACT: " + order.getCustomer().getMail());
     }
 

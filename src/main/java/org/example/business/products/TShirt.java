@@ -35,7 +35,13 @@ public class TShirt extends Garment {
         return neck;
     }
 
-    public void setSleeves(String sleeves) { this.sleeves = sleeves; }
+    public void setSleeves(String sleeves) {
+        this.sleeves = sleeves;
+        System.out.println("SLEEVES SET TO " + this.sleeves);
+    }
 
-    public void setNeck(String neck) { this.neck = neck; }
+    public void setNeck(String neck) {
+        this.neck = neck;
+        System.out.println("NECK SET TO " + this.neck);
+    }
 }

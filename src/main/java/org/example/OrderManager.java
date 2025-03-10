@@ -16,7 +16,7 @@ import org.example.constants.tshirt.*;
 import java.util.Scanner;
 
 /**
- * Class which handles the ordering process.
+ * Manager class for handling the ordering process.
  */
 public class OrderManager {
     private Color color;
@@ -24,8 +24,6 @@ public class OrderManager {
     private Size size;
     private final Customer customer;
     private Order order;
-    private Receipt receipt;
-    private OrderObserver orderObserver;
     private final Scanner scanner;
     IDManager idManager = IDManager.getInstance();
 
@@ -96,40 +94,37 @@ public class OrderManager {
     private TShirt buildTShirt() {
         TShirtBuilder builder = new TShirtBuilder();
         customizeBasics();
-        TShirt tshirt = builder
+        return builder
+                .addName("TSHIRT")
+                .addId(idManager.generateID())
                 .addColor(color)
                 .addSize(size)
                 .addMaterial(material)
                 .build();
-        System.out.println("BUILDING TSHIRT WITH ATTRIBUTES: "
-                + tshirt.getColor() + " " + tshirt.getMaterial() + " " + tshirt.getSize());
-        return tshirt;
     }
 
     private Skirt buildSkirt() {
         SkirtBuilder builder = new SkirtBuilder();
         customizeBasics();
-        Skirt skirt = builder
+        return builder
+                .addName("SKIRT")
+                .addId(idManager.generateID())
                 .addColor(color)
                 .addSize(size)
                 .addMaterial(material)
                 .build();
-        System.out.println("BUILDING SKIRT WITH ATTRIBUTES: "
-                + skirt.getColor() + " " + skirt.getMaterial() + " " + skirt.getSize());
-        return skirt;
     }
 
     private Pants buildPants() {
         PantsBuilder builder = new PantsBuilder();
         customizeBasics();
-        Pants pants = builder
+        return builder
+                .addName("PANTS")
+                .addId(idManager.generateID())
                 .addColor(color)
                 .addSize(size)
                 .addMaterial(material)
                 .build();
-        System.out.println("BUILDING PANTS WITH ATTRIBUTES: "
-                + pants.getColor() + " " + pants.getMaterial() + " " + pants.getSize());
-        return pants;
     }
 
     // Get color, material and size from user
@@ -310,8 +305,8 @@ public class OrderManager {
     }
 
     private void placeOrder() {
-        this.receipt = new Receipt(order, idManager.generateID());
-        this.receipt.createReceipt();
+        Receipt receipt = new Receipt(order, idManager.generateID());
+        receipt.createReceipt();
     }
 
     public void addGarment(Garment garment) {

@@ -31,7 +31,13 @@ public class Skirt extends Garment {
 
     public String getPattern() { return pattern; }
 
-    public void setWaistline(String waistline) { this.waistline = waistline; }
+    public void setWaistline(String waistline) {
+        this.waistline = waistline;
+        System.out.println("WAISTLINE SET TO " + this.waistline);
+    }
 
-    public void setPattern(String pattern) { this.pattern = pattern; }
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+        System.out.println("PATTERN SET TO " + this.pattern);
+    }
 }

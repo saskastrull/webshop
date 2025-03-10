@@ -3,6 +3,9 @@ package org.example.commands;
 import org.example.business.products.Garment;
 import org.example.business.products.TShirt;
 
+/**
+ * Command class used for setting the neck of a shirt.
+ */
 public class NeckCommand implements GarmentCustomizationCommand {
     private String descriptor;
 
