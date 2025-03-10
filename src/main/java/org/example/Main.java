@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.business.CEO;
 import org.example.business.Customer;
 import org.example.business.Order;
 
@@ -24,10 +25,14 @@ public class Main {
 
             System.out.println("0. EXIT \n1. BEGIN ORDER");
             if (scanner.nextInt() == 1) {
-                OrderManager orderManager = new OrderManager(customer, new Order(customer, idManager.generateID()));
-                // Set up observer through OrderManager
-                OrderObserver orderObserver = new OrderObserver();
-                orderManager.setOrderObserver(orderObserver);
+                Order order = new Order(customer, idManager.generateID());
+                CEO ceo = new CEO("Nadjaturb", idManager.generateID());
+
+                // Set up observer
+                OrderObserver orderObserver = new OrderObserver(ceo);
+                order.addPropertyChangeSupport(orderObserver);
+
+                OrderManager orderManager = new OrderManager(customer, order);
                 // Begin ordering process
                 orderManager.orderProcess();
             }

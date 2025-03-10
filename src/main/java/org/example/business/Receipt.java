@@ -3,7 +3,7 @@ package org.example.business;
 import org.example.business.products.Garment;
 
 /**
- * Class containing information about all garments of an order.
+ * Class which stores and prints information about an order.
  */
 public class Receipt {
     private Order order;
@@ -27,30 +27,20 @@ public class Receipt {
             System.out.println(garment.toString());
         }
 
-        System.out.println("TOTAL: " + total);
+        System.out.println("TOTAL: $" + total);
         System.out.println("SHIPPING TO: " + order.getCustomer().getAddress() +
                 "\nCUSTOMER CONTACT: " + order.getCustomer().getMail());
     }
 
-    public Order getOrder() {
-        return order;
-    }
+    public Order getOrder() { return order; }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+    public void setOrder(Order order) { this.order = order; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void setId(int id) {
         this.id = id;

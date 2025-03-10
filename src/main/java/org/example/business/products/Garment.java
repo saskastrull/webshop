@@ -14,45 +14,25 @@ public abstract class Garment {
 
     protected Garment() {}
 
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
+    public void setMaterial(Material material) { this.material = material; }
 
-    public void setSize(Size size) {
-        this.size = size;
-    }
+    public void setSize(Size size) { this.size = size; }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    public void setColor(Color color) { this.color = color; }
 
-    public Material getMaterial() {
-        return material;
-    }
+    public Material getMaterial() { return material; }
 
-    public Size getSize() {
-        return size;
-    }
+    public Size getSize() { return size; }
 
-    public Color getColor() {
-        return color;
-    }
+    public Color getColor() { return color; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
 
     /**
      * Abstract getter for encouraging all child classes to add a price field.

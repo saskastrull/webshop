@@ -6,22 +6,13 @@ import org.example.builders.TShirtBuilder;
 import org.example.business.Customer;
 import org.example.business.Order;
 import org.example.business.Receipt;
-import org.example.business.products.Garment;
-import org.example.business.products.Pants;
-import org.example.business.products.Skirt;
-import org.example.business.products.TShirt;
+import org.example.business.products.*;
 import org.example.commands.*;
-import org.example.constants.general.Color;
-import org.example.constants.general.Material;
-import org.example.constants.general.Size;
-import org.example.constants.pants.Fit;
-import org.example.constants.pants.Length;
-import org.example.constants.skirt.Pattern;
-import org.example.constants.skirt.Waistline;
-import org.example.constants.tshirt.Neck;
-import org.example.constants.tshirt.Sleeves;
+import org.example.constants.general.*;
+import org.example.constants.pants.*;
+import org.example.constants.skirt.*;
+import org.example.constants.tshirt.*;
 
-import java.beans.PropertyChangeSupport;
 import java.util.Scanner;
 
 /**
@@ -35,14 +26,12 @@ public class OrderManager {
     private Order order;
     private Receipt receipt;
     private OrderObserver orderObserver;
-    private PropertyChangeSupport support;
     private final Scanner scanner;
     IDManager idManager = IDManager.getInstance();
 
     public OrderManager(Customer customer, Order order) {
         this.customer = customer;
         this.order = order;
-        this.support = new PropertyChangeSupport(this);
         this.scanner = new Scanner(System.in);
     }
 
@@ -77,7 +66,7 @@ public class OrderManager {
     private void produceGarment(int type) {
         // Check if order doesn't exist
         if (this.order == null) {
-            this.order = new Order();
+            this.order = new Order(this.customer, idManager.generateID());
             System.out.println("CREATING NEW ORDER");
         }
         switch (type) {
@@ -328,21 +317,5 @@ public class OrderManager {
     public void addGarment(Garment garment) {
         System.out.println(garment.getName() + " ADDED TO CART");
         order.addGarment(garment);
-    }
-
-    public OrderObserver getOrderObserver() {
-        return orderObserver;
-    }
-
-    public void setOrderObserver(OrderObserver orderObserver) {
-        this.orderObserver = orderObserver;
-    }
-
-    public void addOrderObserver(OrderObserver orderObserver) {
-        support.addPropertyChangeListener(orderObserver);
-    }
-
-    public void removeOrderObserver(OrderObserver orderObserver) {
-        support.removePropertyChangeListener(orderObserver);
     }
 }

@@ -1,11 +1,25 @@
 package org.example.business.products;
 
+/**
+ * Class representing a pair of pants.
+ */
 public class Pants extends Garment {
     private int price = 30;
     private String fit;
     private String length;
 
     public Pants() {}
+
+    @Override
+    public String toString() {
+        return (this.getName() + " " +
+                this.getColor().name() + " " +
+                this.getMaterial().name() + " " +
+                this.getSize().name() + " " +
+                this.fit + " " +
+                this.length) + " " +
+                this.getId();
+    }
 
     @Override
     public int getPrice() { return price; }
@@ -21,13 +35,7 @@ public class Pants extends Garment {
         return length;
     }
 
-    public void setFit(String fit) {
-        this.fit = fit;
-        System.out.println("FIT WAS CUSTOMIZED TO " + this.fit);
-    }
+    public void setFit(String fit) { this.fit = fit; }
 
-    public void setLength(String length) {
-        this.length = length;
-        System.out.println("LENGTH WAS CUSTOMIZED TO " + this.length);
-    }
+    public void setLength(String length) { this.length = length; }
 }
